@@ -34,7 +34,7 @@
             </button>
 
             <i class="fa-solid fa-user"></i>
-            <i class="fa-solid fa-cart-shopping"></i>
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping" id="cart-icon"></i></a>
         </div>
     </div>
     
@@ -83,7 +83,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$15.36 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$15.36 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Mini Wallet','$15.36')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$14.25 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$14.25 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Women Wallet','$14.25')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$8.25 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$8.25 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Baby Wallet','$8.25')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$11.40 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$11.40 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Women Wallet','$11.40')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$15.85 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$15.85 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Men Wallet','$15.85')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$16.49 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$16.49 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Men Wallet','$16.49')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -191,7 +191,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$10.25 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$10.25 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Women Wallet','$10.25')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -209,7 +209,8 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$11.48 <span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>$11.48 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Men Wallet','$11.48')"></i></a>
+                        </span></h5>
                     </div>
                 </div>
             </div>
@@ -265,6 +266,37 @@
     </footer>
 
     <a href="#" class="arrow"><i><img src="./Images/up-arrow.png" alt="" width="50px"></i></a>
+
+
+
+    <script>
+        function addToCart(productName, productPrice) {
+            let product = { name: productName, price: productPrice };
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+         
+            alert("Product added to cart!");
+        }
+
+        window.onload = function() {
+            let cartItemsContainer = document.getElementById('cartItems');
+
+            cartItemsContainer.innerHTML = '';
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            cart.forEach(function(product) {
+                let newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                `;
+                cartItemsContainer.appendChild(newRow);
+            });
+        }
+    </script>
 
 
 
