@@ -599,6 +599,7 @@ html{
     border-radius: 5px;
     box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
 }
+
 #left h3{
     color: white;
     font-weight: bold;
@@ -678,12 +679,99 @@ html{
     font-weight: 900;
 }
 
+#cartTotal{
+    font-size: 10px;
+    margin: 5px 0 5px;
+    position: absolute;
+    top: 0px; 
+    background-color: #ff0000; 
+    color: #ffffff; 
+    padding: 5px 8px; 
+    border-radius: 50%; 
+}
 
 
+.gradient-custom th {
+    background-color: #f8f9fa; 
+    color: #040471; 
+    font-weight: bold; 
+    padding: 10px;
+    vertical-align: middle;
+}
 
+.gradient-custom td {
+    background-color: #f8f9fa; 
+    color: #535C91; 
+    font-weight: 600; 
+    padding: 10px;
+    vertical-align: middle;
+}
 
+.gradient-custom td button{
+    background-color: red; 
+    color: white; 
+    font-weight: 600; 
+    padding: 10px;
+    border-color: red;
+    border-radius: 8px;
+}
 
+.gradient-custom td button:hover{
+    background-color: white; 
+    color: red; 
+    
+}
 
+.gradient-custom td a {
+    background-color: blue; 
+    color: white; 
+    font-weight: 600; 
+    padding: 10px;
+    border: solid 2px blue;
+    border-radius: 8px;
 
+}
+
+.gradient-custom td a:hover {
+    background-color: white; 
+    color: blue; 
+}
+
+.total-bill{
+    color: #1c1c50;
+    font-weight: 500;
+}
+
+.container-fluid h2{
+    color: #040471;
+}
+
+.col-lg-6 #checkoutForm button{
+    background-color: blue;
+    color: white; 
+    font-weight: 600; 
+    padding: 10px;
+    border: solid 2px blue;
+    border-radius: 8px;
+}
+
+.col-lg-6 #checkoutForm button:hover{
+    background-color: white;
+    color: blue; 
+}
+
+.table .btn-sm{
+    background-color: red;
+    color: white; 
+    font-weight: 600; 
+    padding: 5px;
+    border: solid 2px red;
+    border-radius: 8px;
+}
+
+.table .btn-sm:hover{
+    background-color: white;
+    color: red; 
+}
 
 
