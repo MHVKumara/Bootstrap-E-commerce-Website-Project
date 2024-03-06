@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fashion Store</title>
-    <link rel="shortcut icon" type="image" href="./images/logo2.jpeg">
+    <link rel="shortcut icon" type="image" href="./Images/logo2.jpeg">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -534,21 +534,35 @@
         }
     </script>
 
-    <script>
-        window.onload = function() {
-            
-            let cartTotalSpan = document.getElementById('cartTotal');
+<script>
+    function addToCartAndRefresh(productName, price) {
+        addToCart(productName, price);
+        location.reload();
+    }
+
+    function addToCart(productName, productPrice) {
+        let product = { name: productName, price: productPrice };
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+     
+        alert("Product added to cart!");
+    }
+
+    window.onload = function() {
+        let cartTotalSpan = document.getElementById('cartTotal');
 
 
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            carttotal = cart.length;
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        carttotal = cart.length;
 
-            cartTotalSpan.innerText = carttotal;
+        cartTotalSpan.innerText = carttotal;
 
-           
-        }
-    </script>
+       
+    }
+</script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-EtJ6nHE3qNlYKlAn+wr9WSWu7A6JMOJUy+apb6b6XpXb9+r8Xx1OomVDD4MjmwV6" crossorigin="anonymous"></script>
