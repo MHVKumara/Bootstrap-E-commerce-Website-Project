@@ -1,21 +1,26 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <section class="h-100 gradient-custom">
     <div class="container py-5">
-        <div class="row d-flex justify-content-center my-4" id="cart-items-container">
+        <div class="row d-flex justify-content-center my-4 " id="cart-items-container">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Product</th>
                         <th>Price</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody id="cartItems">
@@ -46,8 +51,10 @@
         
         cartItemsContainer.innerHTML = '';
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let total=0;
 
         cart.forEach(function(product, index) {
+            total += parseFloat(product.price.replace('$', ''));
             let newRow = document.createElement('tr');
             newRow.innerHTML = `
                 <td>${product.name}</td>
@@ -57,7 +64,16 @@
             `;
             cartItemsContainer.appendChild(newRow);
         });
+
+        let endRow = document.createElement('tr');
+            endRow.innerHTML = `
+                <td style= "color:blue">Total :</td>
+                <td style="color:blue;">$ ${total.toFixed(2)}</td>
+                <td><a href="checkout.html" class="btn btn-primary w-1/2">Checkout</a></td>
+                `
+            cartItemsContainer.appendChild(endRow)
     }
+    
 
     window.onload = function() {
         displayCartItems();

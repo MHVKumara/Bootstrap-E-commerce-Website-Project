@@ -34,7 +34,7 @@
             </button>
 
             <i class="fa-solid fa-user"></i>
-            <a href="cart.html"><i class="fa-solid fa-cart-shopping" id="cart-icon"></i></a>
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping" id="cart-icon"><span id="cartTotal">0</span></i></a>
         </div>
     </div>
     
@@ -66,7 +66,6 @@
             </div>
         </div>
     
-
     <div class="container" id="shop">
         <h1 class="text-center" style="font-size: 60px; color: #1B1A55;">Bags</h1>
         <div class="row" style="margin-top: 20px;">  
@@ -83,7 +82,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$45.5 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Traveling Bag', '$45.5')"></i></a></span></h5>
+                        <h5>$45.5 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Traveling Bag', '$45.5')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -101,7 +100,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$20.25 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Makeup Bag','$20.25')"></i></a></span></h5>
+                        <h5>$20.25 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Makeup Bag','$20.25')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -119,7 +118,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$10.25 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Side Bag','$10.25')"></i></a></span></h5>
+                        <h5>$10.25 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Side Bag','$10.25')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -137,7 +136,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$15.40 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Side Bag','$15.40')"></i></a></span></h5>
+                        <h5>$15.40 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Side Bag','$15.40')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -155,7 +154,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$30.85 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Women Hand Bag','$30.85 ')"></i></a></span></h5>
+                        <h5>$30.85 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Women Hand Bag','$30.85 ')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -173,7 +172,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$95.49 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Traveling Bag','$95.49')"></i></a></span></h5>
+                        <h5>$95.49 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Traveling Bag','$95.49')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -191,7 +190,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>$10.25 <span><a href="cart.html"><i class="fa-solid fa-cart-shopping" onclick="addToCart('Hand Bag','$10.25')"></i></a></span></h5>
+                        <h5>$10.25 <span><a href="#"><i class="fa-solid fa-cart-shopping" onclick="addToCartAndRefresh('Hand Bag','$10.25')"></i></a></span></h5>
                     </div>
                 </div>
             </div>
@@ -252,6 +251,11 @@
 
 
     <script>
+        function addToCartAndRefresh(productName, price) {
+            addToCart(productName, price);
+            location.reload();
+        }
+
         function addToCart(productName, productPrice) {
             let product = { name: productName, price: productPrice };
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -263,20 +267,16 @@
         }
 
         window.onload = function() {
-            let cartItemsContainer = document.getElementById('cartItems');
+            let cartTotalSpan = document.getElementById('cartTotal');
 
-            cartItemsContainer.innerHTML = '';
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            carttotal = cart.length;
 
-            cart.forEach(function(product) {
-                let newRow = document.createElement('tr');
-                newRow.innerHTML = `
-                    <td>${product.name}</td>
-                    <td>${product.price}</td>
-                `;
-                cartItemsContainer.appendChild(newRow);
-            });
+            cartTotalSpan.innerText = carttotal;
+
+           
         }
     </script>
 
